@@ -1,11 +1,10 @@
-declare module '@wowanalyzer/react-tooltip-lite' {
+import type { PureComponent, ReactNode } from 'react';
 
-  import * as React from 'react';
-
-  export interface TooltipProps {
+export interface TooltipProps {
     direction?: string;
     className?: string;
-    content: React.ReactNode;
+    content: ReactNode;
+    children?: ReactNode;
     background?: string;
     color?: string;
     padding?: string;
@@ -20,9 +19,7 @@ declare module '@wowanalyzer/react-tooltip-lite' {
     tipContentHover?: boolean;
     arrow?: boolean;
     arrowSize?: number;
-  }
+}
 
-  export default class Tooltip extends React.PureComponent<TooltipProps> {
-  }
-
+export default class Tooltip extends PureComponent<TooltipProps> {
 }

@@ -21,7 +21,6 @@ class Tooltip extends React.PureComponent {
     useHover: PropTypes.bool,
     useDefaultStyles: PropTypes.bool,
     isOpen: PropTypes.bool,
-    hoverDelay: PropTypes.number,
     tipContentHover: PropTypes.bool,
     arrow: PropTypes.bool,
     arrowSize: PropTypes.number,
@@ -35,7 +34,6 @@ class Tooltip extends React.PureComponent {
     padding: '10px',
     useHover: true,
     useDefaultStyles: false,
-    hoverDelay: 0,
     tipContentHover: false,
     arrow: true,
     arrowSize: 10,
@@ -47,7 +45,6 @@ class Tooltip extends React.PureComponent {
 
     this.state = {
       showTip: false,
-      hasHover: false,
     };
 
     this.target = React.createRef();
@@ -55,7 +52,6 @@ class Tooltip extends React.PureComponent {
 
     this.showTip = this.showTip.bind(this);
     this.hideTip = this.hideTip.bind(this);
-    this.checkHover = this.checkHover.bind(this);
     this.toggleTip = this.toggleTip.bind(this);
     this.startHover = this.startHover.bind(this);
     this.endHover = this.endHover.bind(this);
@@ -82,24 +78,15 @@ class Tooltip extends React.PureComponent {
   }
 
   hideTip() {
-    this.setState({ hasHover: false });
     this.setState({ showTip: false });
   }
 
   startHover() {
-    this.setState({ hasHover: true });
-
-    setTimeout(this.checkHover, this.props.hoverDelay);
+    this.setState({ showTip: true });
   }
 
   endHover() {
-    this.setState({ hasHover: false });
-
-    setTimeout(this.checkHover, this.props.hoverDelay);
-  }
-
-  checkHover() {
-    this.setState({ showTip: this.state.hasHover });
+    this.setState({ showTip: false });
   }
 
   render() {
@@ -123,7 +110,6 @@ class Tooltip extends React.PureComponent {
       distance,
       ...others
     } = this.props;
-    delete others.hoverDelay;
 
     const showTip = (typeof isOpen === 'undefined') ? this.state.showTip : isOpen;
 

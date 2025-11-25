@@ -16,13 +16,11 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Portal = require('./Portal');
-
-var _Portal2 = _interopRequireDefault(_Portal);
-
 var _position = require('./position');
 
 var _position2 = _interopRequireDefault(_position);
+
+var _reactDom = require('react-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -114,28 +112,24 @@ var TooltipBubble = function (_React$PureComponent) {
         portalProps.onTouchStart = stopProp;
       }
 
-      return _react2.default.createElement(
-        _Portal2.default,
-        null,
+      return (0, _reactDom.createPortal)(_react2.default.createElement(
+        'div',
+        _extends({}, portalProps, { className: className }),
         _react2.default.createElement(
-          'div',
-          _extends({}, portalProps, { className: className }),
-          _react2.default.createElement(
-            'span',
-            { className: 'react-tooltip-lite', style: tipStyles, ref: this.tip },
-            content
-          ),
-          currentPositions.arrow && _react2.default.createElement('span', {
-            className: 'react-tooltip-lite-arrow react-tooltip-lite-' + currentPositions.realDirection + '-arrow',
-            style: _extends({}, currentPositions.arrow, {
-              position: 'absolute',
-              width: 0,
-              height: 0,
-              zIndex: 1001
-            })
+          'span',
+          { className: 'react-tooltip-lite', style: tipStyles, ref: this.tip },
+          content
+        ),
+        currentPositions.arrow && _react2.default.createElement('span', {
+          className: 'react-tooltip-lite-arrow react-tooltip-lite-' + currentPositions.realDirection + '-arrow',
+          style: _extends({}, currentPositions.arrow, {
+            position: 'absolute',
+            width: 0,
+            height: 0,
+            zIndex: 1001
           })
-        )
-      );
+        })
+      ), document.body);
     }
   }]);
 

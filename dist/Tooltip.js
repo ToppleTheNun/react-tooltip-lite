@@ -47,8 +47,7 @@ var Tooltip = function (_React$PureComponent) {
 
 
     _this.state = {
-      showTip: false,
-      hasHover: false
+      showTip: false
     };
 
     _this.target = _react2.default.createRef();
@@ -56,7 +55,6 @@ var Tooltip = function (_React$PureComponent) {
 
     _this.showTip = _this.showTip.bind(_this);
     _this.hideTip = _this.hideTip.bind(_this);
-    _this.checkHover = _this.checkHover.bind(_this);
     _this.toggleTip = _this.toggleTip.bind(_this);
     _this.startHover = _this.startHover.bind(_this);
     _this.endHover = _this.endHover.bind(_this);
@@ -86,27 +84,17 @@ var Tooltip = function (_React$PureComponent) {
   }, {
     key: 'hideTip',
     value: function hideTip() {
-      this.setState({ hasHover: false });
       this.setState({ showTip: false });
     }
   }, {
     key: 'startHover',
     value: function startHover() {
-      this.setState({ hasHover: true });
-
-      setTimeout(this.checkHover, this.props.hoverDelay);
+      this.setState({ showTip: true });
     }
   }, {
     key: 'endHover',
     value: function endHover() {
-      this.setState({ hasHover: false });
-
-      setTimeout(this.checkHover, this.props.hoverDelay);
-    }
-  }, {
-    key: 'checkHover',
-    value: function checkHover() {
-      this.setState({ showTip: this.state.hasHover });
+      this.setState({ showTip: false });
     }
   }, {
     key: 'render',
@@ -132,8 +120,6 @@ var Tooltip = function (_React$PureComponent) {
           arrowSize = _props.arrowSize,
           distance = _props.distance,
           others = _objectWithoutProperties(_props, ['direction', 'className', 'padding', 'children', 'content', 'eventOn', 'eventOff', 'eventToggle', 'useHover', 'background', 'color', 'useDefaultStyles', 'isOpen', 'tipContentHover', 'arrow', 'arrowSize', 'distance']);
-
-      delete others.hoverDelay;
 
       var showTip = typeof isOpen === 'undefined' ? this.state.showTip : isOpen;
 
@@ -222,7 +208,6 @@ Tooltip.propTypes = {
   useHover: _propTypes2.default.bool,
   useDefaultStyles: _propTypes2.default.bool,
   isOpen: _propTypes2.default.bool,
-  hoverDelay: _propTypes2.default.number,
   tipContentHover: _propTypes2.default.bool,
   arrow: _propTypes2.default.bool,
   arrowSize: _propTypes2.default.number,
@@ -236,7 +221,6 @@ Tooltip.defaultProps = {
   padding: '10px',
   useHover: true,
   useDefaultStyles: false,
-  hoverDelay: 0,
   tipContentHover: false,
   arrow: true,
   arrowSize: 10,

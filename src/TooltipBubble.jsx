@@ -5,8 +5,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Portal from './Portal';
 import positions from './position';
+import { createPortal } from 'react-dom';
 
 // default colors
 const defaultColor = '#fff';
@@ -108,8 +108,7 @@ class TooltipBubble extends React.PureComponent {
       portalProps.onTouchStart = stopProp;
     }
 
-    return (
-      <Portal>
+    return createPortal((
         <div {...portalProps} className={className}>
           <span className="react-tooltip-lite" style={tipStyles} ref={this.tip}>
             {content}
@@ -127,8 +126,7 @@ class TooltipBubble extends React.PureComponent {
             />
           )}
         </div>
-      </Portal>
-    );
+    ), document.body);
   }
 }
 

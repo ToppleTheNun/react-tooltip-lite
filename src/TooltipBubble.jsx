@@ -32,6 +32,7 @@ class TooltipBubble extends React.PureComponent {
     target: PropTypes.object,
     startHover: PropTypes.func,
     endHover: PropTypes.func,
+    container: PropTypes.object.isRequired,
   };
   static defaultProps = {
     direction: 'up',
@@ -77,6 +78,7 @@ class TooltipBubble extends React.PureComponent {
       target,
       startHover,
       endHover,
+      container,
     } = this.props;
 
     const currentPositions = positions(direction, this.tip.current, target, {
@@ -126,7 +128,7 @@ class TooltipBubble extends React.PureComponent {
             />
           )}
         </div>
-    ), document.body);
+    ), container);
   }
 }
 

@@ -18,6 +18,7 @@ export interface TooltipProps {
   tipContentHover?: boolean;
   arrow?: boolean;
   arrowSize?: number;
+  portalContainer: HTMLElement;
 }
 
 export default class Tooltip extends PureComponent<TooltipProps> {}

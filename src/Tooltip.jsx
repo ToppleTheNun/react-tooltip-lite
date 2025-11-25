@@ -25,6 +25,7 @@ class Tooltip extends React.PureComponent {
     arrow: PropTypes.bool,
     arrowSize: PropTypes.number,
     distance: PropTypes.number,
+    portalContainer: PropTypes.object.isRequired,
   };
   static defaultProps = {
     direction: 'up',
@@ -108,6 +109,7 @@ class Tooltip extends React.PureComponent {
       arrow,
       arrowSize,
       distance,
+      portalContainer,
       ...others
     } = this.props;
 
@@ -182,6 +184,7 @@ class Tooltip extends React.PureComponent {
             target={this.target.current}
             startHover={this.startHover}
             endHover={this.endHover}
+            container={portalContainer}
           />
         )}
       </React.Fragment>

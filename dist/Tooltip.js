@@ -119,7 +119,8 @@ var Tooltip = function (_React$PureComponent) {
           arrow = _props.arrow,
           arrowSize = _props.arrowSize,
           distance = _props.distance,
-          others = _objectWithoutProperties(_props, ['direction', 'className', 'padding', 'children', 'content', 'eventOn', 'eventOff', 'eventToggle', 'useHover', 'background', 'color', 'useDefaultStyles', 'isOpen', 'tipContentHover', 'arrow', 'arrowSize', 'distance']);
+          portalContainer = _props.portalContainer,
+          others = _objectWithoutProperties(_props, ['direction', 'className', 'padding', 'children', 'content', 'eventOn', 'eventOff', 'eventToggle', 'useHover', 'background', 'color', 'useDefaultStyles', 'isOpen', 'tipContentHover', 'arrow', 'arrowSize', 'distance', 'portalContainer']);
 
       var showTip = typeof isOpen === 'undefined' ? this.state.showTip : isOpen;
 
@@ -186,7 +187,8 @@ var Tooltip = function (_React$PureComponent) {
           distance: distance,
           target: this.target.current,
           startHover: this.startHover,
-          endHover: this.endHover
+          endHover: this.endHover,
+          container: portalContainer
         })
       );
     }
@@ -211,7 +213,8 @@ Tooltip.propTypes = {
   tipContentHover: _propTypes2.default.bool,
   arrow: _propTypes2.default.bool,
   arrowSize: _propTypes2.default.number,
-  distance: _propTypes2.default.number
+  distance: _propTypes2.default.number,
+  portalContainer: _propTypes2.default.object.isRequired
 };
 Tooltip.defaultProps = {
   direction: 'up',

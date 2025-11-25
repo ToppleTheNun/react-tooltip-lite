@@ -81,7 +81,8 @@ var TooltipBubble = function (_React$PureComponent) {
           distance = _props.distance,
           target = _props.target,
           startHover = _props.startHover,
-          endHover = _props.endHover;
+          endHover = _props.endHover,
+          container = _props.container;
 
 
       var currentPositions = (0, _position2.default)(direction, this.tip.current, target, {
@@ -129,7 +130,7 @@ var TooltipBubble = function (_React$PureComponent) {
             zIndex: 1001
           })
         })
-      ), document.body);
+      ), container);
     }
   }]);
 
@@ -152,7 +153,8 @@ TooltipBubble.propTypes = {
   distance: _propTypes2.default.number,
   target: _propTypes2.default.object,
   startHover: _propTypes2.default.func,
-  endHover: _propTypes2.default.func
+  endHover: _propTypes2.default.func,
+  container: _propTypes2.default.object.isRequired
 };
 TooltipBubble.defaultProps = {
   direction: 'up',
